@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 
 // POST endpoint to send an email
 app.post('/send', async (req, res) => {
-    const { name, email, comments ,contact ,gender ,state ,city ,pincode} = req.body;
+    const { name, email, comments ,contact ,gender ,state ,city ,pincode ,occupation} = req.body;
 
     if (!name || !email || !comments) {
         return res.status(400).send({ error: 'Please provide name, email, and message.' });
@@ -46,7 +46,8 @@ app.post('/send', async (req, res) => {
                <p><strong>City:</strong> ${city}</p>
                <p><strong>Pincode:</strong> ${pincode}</p>
                <p><strong>Gender:</strong> ${gender}</p>
-               <p><strong>Message:</strong> ${comments}</p>`,
+               <p><strong>Message:</strong> ${comments}</p>
+               <p><strong>Occupation:</strong> ${occupation}`,
         replyTo: email, // Sets the reply-to to the user's email
     };
 
