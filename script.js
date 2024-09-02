@@ -3,10 +3,17 @@ const express = require('express');
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const compression =require("compression");
 
 const app = express();
 app.use(cors());
+app.use(compression());
 app.use(bodyParser.json());
+
+// app.get("/" , (req , res)=>{
+//     const payload='Kaise ho app sab'
+//     res.send(payload.repeat(1000))
+// })
 
 // POST endpoint to send an email
 app.post('/send', async (req, res) => {
